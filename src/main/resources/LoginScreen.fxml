@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chatClient.view.controller.LoginScreenController">
+   <children>
+      <Text fill="#131313" layoutX="236.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="128.53668212890625">
+         <font>
+            <Font name="Arial Bold" size="42.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Text>
+      <TextField fx:id="userName" layoutX="226.0" layoutY="148.0" promptText="UserName" />
+      <PasswordField fx:id="password" layoutX="225.0" layoutY="212.0" onAction="#onEnter" promptText="Password" />
+      <Text layoutX="226.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName" wrappingWidth="71.73675537109375" />
+      <Text layoutX="226.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="71.73675537109375" />
+      <Hyperlink layoutX="285.0" layoutY="250.0" onAction="#forgotPassword" prefHeight="24.0" prefWidth="107.0" text="Forgot password ?" textFill="#fa0000" />
+      <Hyperlink layoutX="285.0" layoutY="274.0" onAction="#registerNewUser" prefHeight="24.0" prefWidth="107.0" text="Are you new ?" textFill="#0048fa" />
+      <Button layoutX="190.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="24.0" prefWidth="90.0" text="Login" />
+      <Text fx:id="error" fill="#f40000" layoutX="174.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="292.53668212890625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

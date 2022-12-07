@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chatClient.view.controller.RegisterScreenController">
+   <children>
+      <Text layoutX="193.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" textAlignment="CENTER" wrappingWidth="213.33673095703125">
+         <font>
+            <Font name="Arial Bold" size="43.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Text>
+      <TextField fx:id="userName" layoutX="118.0" layoutY="117.0" promptText="UserName" />
+      <TextField fx:id="email" layoutX="119.0" layoutY="186.0" prefHeight="26.0" prefWidth="189.0" promptText="Email" />
+      <PasswordField fx:id="password" layoutX="331.0" layoutY="117.0" promptText="Password" />
+      <PasswordField fx:id="password2" layoutX="331.0" layoutY="187.0" onAction="#onEnter" promptText="Second Password" />
+      <Text layoutX="119.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName" wrappingWidth="68.53668212890625" />
+      <Text layoutX="331.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="68.53668212890625" />
+      <Text layoutX="118.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address" wrappingWidth="84.53668212890625" />
+      <Text layoutX="331.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password 2" wrappingWidth="68.53668212890625" />
+      <Button layoutX="438.0" layoutY="296.0" mnemonicParsing="false" onAction="#registerButton" prefHeight="26.0" prefWidth="85.0" text="Register" />
+      <Button layoutX="33.0" layoutY="296.0" mnemonicParsing="false" onAction="#backButton" prefHeight="35.0" prefWidth="94.0" text="Back To Login" />
+      <Text fx:id="error" fill="RED" layoutX="119.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="313.33673095703125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
