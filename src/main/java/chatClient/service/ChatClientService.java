@@ -1,8 +1,6 @@
 package chatClient.service;
 
-import chatClient.model.api.ForgotPassword;
-import chatClient.model.api.Login;
-import chatClient.model.api.Register;
+import chatClient.model.api.UserInfo;
 import chatClient.model.api.RequestConfirmation;
 import chatClient.model.socket.Member;
 import chatClient.model.socket.Message;
@@ -30,7 +28,7 @@ public class ChatClientService implements IChatClientService, PropertyChangeList
 
     @Override
     public void findPassword(String userName, String email) {
-        String password = apiClient.forgotPasswordRequest(new ForgotPassword(userName, email));
+        String password = apiClient.forgotPasswordRequest(new UserInfo(userName, email, null));
         if (password != null) {
             property.firePropertyChange("forgotPassword", null, password);
         }
@@ -38,7 +36,7 @@ public class ChatClientService implements IChatClientService, PropertyChangeList
 
     @Override
     public boolean login(String userName, String password) {
-        RequestConfirmation requestConfirmation = apiClient.loginRequest(new Login(userName, password));
+        RequestConfirmation requestConfirmation = apiClient.loginRequest(new UserInfo(userName, null, password));
         if (requestConfirmation.isSuccess()) {
             this.userName = userName;
             property.firePropertyChange("name", null, userName);
@@ -52,7 +50,7 @@ public class ChatClientService implements IChatClientService, PropertyChangeList
 
     @Override
     public boolean register(String userName, String password, String email) {
-        RequestConfirmation requestConfirmation = apiClient.registerRequest(new Register(userName, password, email));
+        RequestConfirmation requestConfirmation = apiClient.registerRequest(new UserInfo(userName, password, email));
         if (requestConfirmation.isSuccess()) {
             return true;
         } else {

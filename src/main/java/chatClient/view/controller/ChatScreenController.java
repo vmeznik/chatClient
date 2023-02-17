@@ -5,6 +5,7 @@ import chatClient.model.socket.Member;
 import chatClient.model.socket.Message;
 import chatClient.view.ViewHandler;
 import chatClient.view.viewModel.ChatScreenViewModel;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -48,6 +49,12 @@ public class ChatScreenController {
 
                 selectedMember = members.getSelectionModel().getSelectedItem();
                 viewModel.selectChat(selectedMember);
+            }
+        });
+        this.chat.itemsProperty().addListener(new ChangeListener<ObservableList<Message>>() {
+            @Override
+            public void changed(ObservableValue<? extends ObservableList<Message>> observableValue, ObservableList<Message> messages, ObservableList<Message> t1) {
+                chat.scrollTo(chat.getItems().size() - 1);
             }
         });
     }

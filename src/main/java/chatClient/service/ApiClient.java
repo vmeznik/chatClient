@@ -1,8 +1,6 @@
 package chatClient.service;
 
-import chatClient.model.api.ForgotPassword;
-import chatClient.model.api.Login;
-import chatClient.model.api.Register;
+import chatClient.model.api.UserInfo;
 import chatClient.model.api.RequestConfirmation;
 import chatClient.utility.Logger;
 import jakarta.ws.rs.client.*;
@@ -16,7 +14,7 @@ public class ApiClient {
         this.client = ClientBuilder.newClient();
     }
 
-    public RequestConfirmation registerRequest(Register register) {
+    public RequestConfirmation registerRequest(UserInfo userInfo) {
         WebTarget resource = client.target("http://localhost:8080/chatClient/register");
 
         Invocation.Builder request = resource.request(MediaType.APPLICATION_JSON);
@@ -25,7 +23,7 @@ public class ApiClient {
         RequestConfirmation requestConfirmation = new RequestConfirmation(false,
                 "confirmation was not successful");
         try {
-            response = request.post(Entity.entity(register, MediaType.APPLICATION_JSON));
+            response = request.post(Entity.entity(userInfo, MediaType.APPLICATION_JSON));
             requestConfirmation = response.readEntity(RequestConfirmation.class);
         } catch (Exception e) {
             Logger.getInstance().log("Error while registering");
@@ -34,7 +32,7 @@ public class ApiClient {
         return requestConfirmation;
     }
 
-    public RequestConfirmation loginRequest(Login login) {
+    public RequestConfirmation loginRequest(UserInfo userInfo) {
         WebTarget resource = client.target("http://localhost:8080/chatClient/login");
 
         Invocation.Builder request = resource.request(MediaType.APPLICATION_JSON);
@@ -43,7 +41,7 @@ public class ApiClient {
         RequestConfirmation requestConfirmation = new RequestConfirmation(false,
                 "confirmation was not successful");
         try {
-            response = request.post(Entity.entity(login, MediaType.APPLICATION_JSON));
+            response = request.post(Entity.entity(userInfo, MediaType.APPLICATION_JSON));
             requestConfirmation = response.readEntity(RequestConfirmation.class);
         } catch (Exception e) {
             Logger.getInstance().log("Error while logging in");
@@ -52,7 +50,7 @@ public class ApiClient {
         return requestConfirmation;
     }
 
-    public String forgotPasswordRequest(ForgotPassword forgotPassword) {
+    public String forgotPasswordRequest(UserInfo userInfo) {
         WebTarget resource = client.target("http://localhost:8080/chatClient/forgotPassword");
 
         Invocation.Builder request = resource.request(MediaType.APPLICATION_JSON);
@@ -60,7 +58,7 @@ public class ApiClient {
         Response response;
         String password = "";
         try {
-            response = request.post(Entity.entity(forgotPassword, MediaType.APPLICATION_JSON));
+            response = request.post(Entity.entity(userInfo, MediaType.APPLICATION_JSON));
             password = response.readEntity(String.class);
         } catch (Exception e) {
             Logger.getInstance().log("Error while forgot password request");

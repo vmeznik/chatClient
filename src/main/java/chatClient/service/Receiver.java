@@ -38,7 +38,7 @@ public class Receiver implements Runnable, UnnamedPropertyChangeSubject {
                 ArrayList<Message> response = gson.fromJson(jsonResponse, messageType);
                 if (response.get(0).getSender() != null) {
                     property.firePropertyChange("chat", null, response);
-                }else {
+                } else {
                     ArrayList<Member> responseMember = gson.fromJson(jsonResponse, memberType);
                     property.firePropertyChange("members", null, responseMember);
                 }

@@ -12,5 +12,5 @@ public interface IChatClientService extends UnnamedPropertyChangeSubject {
 
     void selectChat(Member member);
 
-    void sendMessage(String text , Member member);
+    void sendMessage(String text, Member member);
 }
